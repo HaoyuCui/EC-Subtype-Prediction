@@ -25,9 +25,8 @@ transform_val = v2.Compose([
 
 
 class PathologyDataset(Dataset):
-    def __init__(self, mode, combination):
+    def __init__(self, mode):
         self.mode = mode
-        self.combination = combination
         self.data = pd.read_csv(f'{mode}.csv')
 
         self.name = self.data['name']
@@ -57,9 +56,8 @@ class PathologyDataset(Dataset):
 
 
 class PathologyDatasetKFold(Dataset):
-    def __init__(self,  mode, combination, fold):
+    def __init__(self,  mode, fold):
         self.mode = mode
-        self.combination = combination
         self.data = pd.read_csv(f'kf/{fold}_{mode}.csv')
 
         self.name = self.data['name']

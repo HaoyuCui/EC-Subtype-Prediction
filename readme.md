@@ -1,7 +1,7 @@
 Endometrial Cancer Subtype Prediction
 ===========
 
-Official code
+Official code release
 
 [Journal link](tbd) | [Cite](tbd)
 
@@ -41,7 +41,9 @@ pip install -r requirements.txt
     │       └── patch_n.png
     ```
 
-2. Organize your data like `example.csv`. Create k-fold split for the data.
+2. **[Optional]** Run stain normalization for whole slide image tiles [wsi_normalizer](https://github.com/HaoyuCui/WSI_Normalizer). This step is recommended for external validation when you have multiple cohorts.
+
+3. Organize your data like `example.csv`. Create k-fold split for the data.
 
     ```bash
     python utils/gen_kfold_split.py --csv <CSV_PATH>  --dir <STEP_2_OUTPUT_DIR> --k 5 --on slide

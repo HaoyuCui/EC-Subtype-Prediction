@@ -38,8 +38,6 @@ def print_configs(_args):
 if __name__ == '__main__':
     args = parse_args()
 
-    combination = args.cmb
-
     print_configs(args)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -51,8 +49,8 @@ if __name__ == '__main__':
     assert os.path.exists(f'./kf'), 'k-fold dir not exists, run utils/gen_kfold_split.py first'
 
     # create dataset objects for train and val
-    train_dataset = PathologyDatasetKFold(mode='train', combination=combination, fold=args.fold)
-    val_dataset = PathologyDatasetKFold(mode='val', combination=combination, fold=args.fold)
+    train_dataset = PathologyDatasetKFold(mode='train', fold=args.fold)
+    val_dataset = PathologyDatasetKFold(mode='val', fold=args.fold)
 
     # create data loaders for train and val
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=4)
