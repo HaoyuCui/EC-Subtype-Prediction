@@ -99,9 +99,6 @@ We are grateful to the authors for sharing their code. We use CLAM for data prep
 | Model      | Authors          | GitHub link                                             |
 |---------------|---------------|---------------------------------------------------------|
 | CLAM          | Lu et al.     | [https://github.com/mahmoodlab/CLAM](https://github.com/mahmoodlab/CLAM) |
-| DTFD-MIL      | Zhang et al.  | [https://github.com/hrzhang1123/DTFD-MIL](https://github.com/hrzhang1123/DTFD-MIL) |
-| SETMIL        | Zhao et al.   | [https://github.com/Louis-YuZhao/SETMIL](https://github.com/Louis-YuZhao/SETMIL) |
-| TransMIL      | Shao et al.   | [https://github.com/szc19990412/TransMIL](https://github.com/szc19990412/TransMIL) |
 | im4MEC        | Fremond et al.| [https://github.com/AIRMEC/im4MEC](https://github.com/AIRMEC/im4MEC) |
 
 
