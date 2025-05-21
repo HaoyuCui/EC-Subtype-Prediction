@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from utils.dataset import PathologyDatasetKFold
 from utils.metrics import val_auc
-from model import hiUNI
+from model import Model
 
 
 def load_config(config_path='config.yaml'):
@@ -22,9 +22,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Train hi-UNI")
     parser.add_argument('--fold', type=int, default=1, help='Fold for cross-validation')
     args = parser.parse_args()
-    config_keys = ['batch_size', 'lr', 'freeze_ratio', 'cmb',
-                   'epochs', 'iters_to_val', 'save_best', 'UNI_path',
-                   'class_names']
+    config_keys = ['batch_size', 'lr', 'epochs', 'iters_to_val', 'save_best', 'class_names']
     for key in config_keys:
         setattr(args, key, load_config()[key])
     return args
@@ -60,7 +58,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=4)
     val_loader = DataLoader(val_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=4)
 
-    model = hiUNI(n_classes=num_classes, freeze_ratio=args.freeze_ratio, cmb=args.cmb, ckpt_path=args.UNI_path)
+    model = Model(n_classes=num_classes)
     model.to(device)
 
     criterion_train = nn.CrossEntropyLoss().to(device)

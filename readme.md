@@ -1,15 +1,10 @@
-hi-UNI <img src="./utils/.hi-UNI-logo.png" width="280px" align="right" />
+Endometrial Cancer Subtype Prediction
 ===========
 
-Official code for **Prediction of molecular subtypes for endometrial cancer based on hierarchical foundation model**. _Bioinformatics_
+Official code
 
-[Journal link](https://doi.org/10.1093/bioinformatics/btaf059) | [Cite](https://github.com/HaoyuCui/hi-UNI?tab=readme-ov-file#Reference)
+[Journal link](tbd) | [Cite](tbd)
 
-> hi-UNI: hierarchical UNI is used for whole slide image classification, using a weakly supervised pipeline. Our method achieved state-of-the-art performance, offering cost-effective and fast molecular subtyping for endometrial cancer.
-
-## Overview
-
-<img width="1000" alt="image" align="center" src="https://github.com/user-attachments/assets/bcd49310-8c6d-4f74-89ee-33395315e1bf" />
 
 ## Installation
 
@@ -23,7 +18,7 @@ pip install -r requirements.txt
 
 1. We have uploaded another repo for data preprocessing: [WSI_Segmenter](https://github.com/HaoyuCui/WSI_Segmenter). Which can also be found in the [./preprocess](./preprocess) directory. The detailed patch extraction and segmentation steps can be found in the [./preprocess/readme.md](preprocess/readme.md). 
 
-2. Extract raw patches to at least 1024x1024 resolution, use [tiatoolbox](https://github.com/TissueImageAnalytics/tiatoolbox) or [DeepZoom](https://github.com/ncoudray/DeepPATH/blob/master/DeepPATH_code/00_preprocessing/0b_tileLoop_deepzoom6.py) for patch extraction. The tumor segmentation network can be easily added to these pipelines.
+2. Extract raw patches to 1024x1024 resolution, use [tiatoolbox](https://github.com/TissueImageAnalytics/tiatoolbox) or [DeepZoom](https://github.com/ncoudray/DeepPATH/blob/master/DeepPATH_code/00_preprocessing/0b_tileLoop_deepzoom6.py) for patch extraction. The tumor segmentation network can be easily added to these pipelines.
 
 
 ## Data preparation
@@ -46,17 +41,7 @@ pip install -r requirements.txt
     │       └── patch_n.png
     ```
 
-
-
-2. Create a hierarchical structure for the data.
-
-    ```bash
-    python utils/create_hi_patches.py --input <INPUT_DIR> --output <OUTPUT_DIR> --how non-blank
-    ```
-    
-    `--how` : **center** (center-crop) or **non-blank** (selective-sampling, proposed in the paper)
-
-3. Organize your data like `example.csv`. Create k-fold split for the data.
+2. Organize your data like `example.csv`. Create k-fold split for the data.
 
     ```bash
     python utils/gen_kfold_split.py --csv <CSV_PATH>  --dir <STEP_2_OUTPUT_DIR> --k 5 --on slide
@@ -68,13 +53,9 @@ pip install -r requirements.txt
    
    A directory named `kf` will be created in the current directory.
 
-4. Apply for the UNI model from <a href="https://huggingface.co/MahmoodLab/UNI"><img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000"/></a> and download the `pytorch_model.bin`.
-
 5. Modify the [config.yaml](config.yaml) file to set hyperparameters and UNI's storage path.
 
     - Hyperparameters: **batch_size**, **lr**, **epochs**, **iters_to_val**, **save_best**
-    
-    - UNI config: **freeze_ratio** (for ViT blocks), **cmb** (hi-UNI combinations), **UNI_path** 
     
     - Task-specific config: **class_names**
 
@@ -128,21 +109,5 @@ We are grateful to the authors for sharing their code. We use CLAM for data prep
 
 ## Reference
 
-If you find our work useful in your research, please consider citing our paper:
-
-Haoyu Cui, Qinhao Guo, Jun Xu, Xiaohua Wu, Chengfei Cai, Yiping Jiao, Wenlong Ming, Hao Wen, Xiangxue Wang, Prediction of molecular subtypes for endometrial cancer based on hierarchical foundation model, _Bioinformatics_, 2025
-
-```bibtex
-@article{10.1093/bioinformatics/btaf059,
-    author = {Cui, Haoyu and Guo, Qinhao and Xu, Jun and Wu, Xiaohua and Cai, Chengfei and Jiao, Yiping and Ming, Wenlong and Wen, Hao and Wang, Xiangxue},
-    title = {Prediction of molecular subtypes for endometrial cancer based on hierarchical foundation model},
-    journal = {Bioinformatics},
-    pages = {btaf059},
-    year = {2025},
-    month = {02},
-    issn = {1367-4811},
-    doi = {10.1093/bioinformatics/btaf059},
-    url = {https://doi.org/10.1093/bioinformatics/btaf059},
-}
-```
+TBD
 
