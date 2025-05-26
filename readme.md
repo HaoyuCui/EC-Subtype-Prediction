@@ -91,6 +91,20 @@ pip install -r requirements.txt
     │   ...
    ```
    
+4. [im4MEC pipeline](https://github.com/AIRMEC/im4MEC) Here, we follow the im4MEC pipeline to pretrain, train and evaluate the model (we simplify the original code for single-gpu-support). The codes are provided in the `im4MEC-pipeline/` directory.
+
+    - Pretrain the model:
+    ```bash
+    python train_moco_v2.py
+    ```
+
+    - Extract features:
+    ```bash
+    python extract_features.py
+    ```
+   
+   Then, you can use the CLAM pipeline for model training and evaluation.
+   
 
 ## Comparison experiments
 

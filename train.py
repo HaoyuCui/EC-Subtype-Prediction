@@ -68,7 +68,7 @@ if __name__ == '__main__':
     # scheduler
     scheduler = CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
 
-    store_path = f'runs/{combination}_{args.freeze_ratio}/{args.fold}/'
+    store_path = f'runs/{args.fold}/'
     os.makedirs(store_path, exist_ok=True)
 
     best_slide_auc = 0

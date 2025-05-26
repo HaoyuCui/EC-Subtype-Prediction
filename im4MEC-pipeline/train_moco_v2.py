@@ -30,6 +30,9 @@ if __name__ == '__main__':
     # set optimizer
     optimizer = torch.optim.Adam(model.parameters(), lr=0.06)
 
+    # set learning rate scheduler
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=300, eta_min=0)
+
     # switch to train mode
     model.train()
 
@@ -50,9 +53,10 @@ if __name__ == '__main__':
             # compute gradient and do SGD step
             loss.backward()
             optimizer.step()
+            scheduler.step()
 
             if i % 50 == 0:
-                print(f'Epoch {epoch}, Iteration {i}, Loss: {loss.item()}')
+                print(f'Epoch {epoch}, Iteration {i}, Loss: {loss.item()}, Current LR: {scheduler.get_last_lr()}')
 
         # save model if loss is lower than previous
         if loss.item() < loss_min:
