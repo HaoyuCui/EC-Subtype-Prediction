@@ -4,9 +4,6 @@ class_names: ['MMRd', 'NSMP', 'p53abn', 'POLE mut']
 # Training
 batch_size: 10  # batch size
 lr: 2e-5  # learning rate
-epochs: 10
+epochs: 80
 iters_to_val: 400  # set to -1 to validate per epoch
 save_best: True
-
-# Model
-freeze_ratio: 0.6  # ratio of Model parts to freeze

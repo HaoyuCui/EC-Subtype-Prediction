@@ -56,7 +56,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=4)
     val_loader = DataLoader(val_dataset, batch_size=args.batch_size * 2, shuffle=False, num_workers=4)
 
-    model = Model(n_classes=num_classes)
+    model = Model(model_name='efficientnet', n_classes=num_classes)
     model.to(device)
 
     criterion_train = nn.CrossEntropyLoss().to(device)

@@ -1,5 +1,3 @@
-import os.path
-
 import torch
 
 import torch.nn as nn
@@ -54,9 +52,9 @@ class Model(nn.Module):
 
 # for debugging
 if __name__ == '__main__':
-    model = Model(model_name='efficientnet', n_classes=4).to('cuda')
+    model = Model(model_name='vit', n_classes=4).to('cuda')
     # print(model)
-    x = torch.randn(2, 3, 1024, 1024).cuda()  # [batch_size, 3, 224, 224]
+    x = torch.randn(2, 3, 224, 224).cuda()  # [batch_size, 3, 224, 224]
     output = model(x)
     print(output.shape)
 
