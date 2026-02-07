@@ -1,10 +1,15 @@
 Endometrial Cancer Subtype Prediction
 ===========
 
-Official code release
+Official code for **An interpretable deep learning model for predicting endometrial cancer molecular subtypes from H&E-stained slides**. *npj precision oncology*
 
-[Journal link](tbd) | [Cite](tbd)
+[Journal link](https://www.nature.com/articles/s41698-026-01280-w) | [Download citation](https://citation-needed.springer.com/v2/references/10.1038/s41698-026-01280-w?format=refman&flavour=citation)
 
+> This repository contains the official implementation of a deep learning framework designed to predict molecular subtypes of endometrial cancer directly from H&E-stained whole slide images. By leveraging an interpretable, end-to-end prediction network, this tool bridges the gap between traditional histology and modern molecular profiling, offering a cost-effective and scalable approach to personalized oncology.
+
+## Overview
+
+![pipeline](pipeline.png)
 
 ## Installation
 
@@ -16,7 +21,7 @@ pip install -r requirements.txt
 
 ## Preprocessing
 
-1. We have uploaded another repo for data preprocessing: [WSI_Segmenter](https://github.com/HaoyuCui/WSI_Segmenter). Which can also be found in the [./preprocess](./preprocess) directory. The detailed patch extraction and segmentation steps can be found in the [./preprocess/readme.md](preprocess/readme.md). 
+1. We have uploaded another repo for data preprocessing: [WSI_Segmenter](https://github.com/HaoyuCui/WSI_Segmenter). It can also be found in the [./preprocess](./preprocess) directory. The detailed patch extraction and segmentation steps can be found in the [./preprocess/readme.md](preprocess/readme.md). 
 
 2. Extract raw patches to 1024x1024 resolution, use [tiatoolbox](https://github.com/TissueImageAnalytics/tiatoolbox) or [DeepZoom](https://github.com/ncoudray/DeepPATH/blob/master/DeepPATH_code/00_preprocessing/0b_tileLoop_deepzoom6.py) for patch extraction. The tumor segmentation network can be easily added to these pipelines.
 
@@ -55,7 +60,7 @@ pip install -r requirements.txt
    
    A directory named `kf` will be created in the current directory.
 
-5. Modify the [config.yaml](config.yaml) file to set hyperparameters and UNI's storage path.
+4. Modify the [config.yaml](config.yaml) file to set hyperparameters.
 
     - Hyperparameters: **batch_size**, **lr**, **epochs**, **iters_to_val**, **save_best**
     
@@ -82,7 +87,7 @@ pip install -r requirements.txt
    In the format of:
    ```txt
     ├── runs
-    │   ├── {cmbs}_{freeze_ration}  # configuration
+    │   ├── {cmbs}  # configuration
     │   │   ├── 1  # fold name
     │   │   │   ├── {fold}_best.pth  # best model
     │   │   │   ├── slide_{iter}.png  # slide-level ROC
@@ -91,7 +96,7 @@ pip install -r requirements.txt
     │   ...
    ```
    
-4. [im4MEC pipeline](https://github.com/AIRMEC/im4MEC) Here, we follow the im4MEC pipeline to pretrain, train and evaluate the model (we simplify the original code for single-gpu-support). The codes are provided in the `im4MEC-pipeline/` directory.
+4. [im4MEC pipeline](https://github.com/AIRMEC/im4MEC) Here, we follow the im4MEC pipeline to pretrain, train and evaluate the model (we simplify the original code for single-gpu-support). The code is provided in the `im4MEC-pipeline/` directory.
 
     - Pretrain the model:
     ```bash
@@ -106,21 +111,33 @@ pip install -r requirements.txt
    Then, you can use the CLAM pipeline for model training and evaluation.
    
 
+## Interpretable feature analysis
+
+
+The code for interpretable feature analysis is provided in the another repository: [PyPathomics](https://github.com/HaoyuCui/PyPathomics).
+
+![feature-set-eg](https://github.com/user-attachments/assets/30e54412-c26e-4dde-84b0-0b5a67f12c50)
+
+
 ## Comparison experiments
 
 We are grateful to the authors for sharing their code. We use CLAM for data preprocessing and feature extraction in comparison experiments.
 
-| Model      | Authors          | GitHub link                                             |
-|---------------|---------------|---------------------------------------------------------|
-| CLAM          | Lu et al.     | [https://github.com/mahmoodlab/CLAM](https://github.com/mahmoodlab/CLAM) |
-| im4MEC        | Fremond et al.| [https://github.com/AIRMEC/im4MEC](https://github.com/AIRMEC/im4MEC) |
+| Model    | Authors        | GitHub link                                                                     |
+| -------- | -------------- | ------------------------------------------------------------------------------- |
+| CLAM     | Lu et al.      | [https://github.com/mahmoodlab/CLAM](https://github.com/mahmoodlab/CLAM)        |
+| im4MEC   | Fremond et al. | [https://github.com/AIRMEC/im4MEC](https://github.com/AIRMEC/im4MEC)            |
+| TransMIL | Shao et al.    | [https://github.com/zhangzj5/TransMIL](https://github.com/szc19990412/TransMIL) |
 
 
 ## License
 
-© [IMIC](https://imic.nuist.edu.cn/) - This code is made available under the GPLv3 License and is available for non-commercial academic purposes.
+© This code is released under the GPLv3 License for non-commercial academic use.
 
 ## Reference
 
-TBD
+If you find our work useful in your research, please consider citing our paper:
+
+Guo, Q., Cui, H., Zhang, Y. et al. An interpretable deep learning model for predicting endometrial cancer molecular subtypes from H&E-stained slides. npj Precis. Onc. (2026). https://doi.org/10.1038/s41698-026-01280-w
+ 
 

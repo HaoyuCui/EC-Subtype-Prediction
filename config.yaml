@@ -1,5 +1,5 @@
 # Dataset
-class_names: ['MMRd', 'NSMP', 'p53abn', 'POLE mut']
+class_names: ['MSI-H', 'NSMP', 'p53abn', 'POLE mut']
 
 # Training
 batch_size: 10  # batch size
